@@ -65,7 +65,7 @@ const filterItems = document.querySelectorAll("[data-filter-item]");
 
 const filterFunc = (selectedValue) => {
   filterItems.forEach(item => {
-    if (selectedValue === "all" || selectedValue === item.dataset.category) {
+    if (selectedValue === "all" || selectedValue === item.dataset.category.toLowerCase()) {
       item.classList.add("active");
     } else {
       item.classList.remove("active");
@@ -109,7 +109,7 @@ const navigationLinks = document.querySelectorAll("[data-nav-link]");
 const pages = document.querySelectorAll("[data-page]");
 
 // add event to all nav link
-navigationLinks.forEach((link, index) => {
+navigationLinks.forEach((link) => {
   link.addEventListener("click", () => {
     pages.forEach((page, pageIndex) => {
       if (link.innerHTML.toLowerCase() === page.dataset.page) {
