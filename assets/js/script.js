@@ -13,7 +13,32 @@ sidebarBtn.addEventListener("click", () => elementToggleFunc(sidebar));
 // testimonials variables
 const testimonialsItems = document.querySelectorAll("[data-testimonials-item]");
 const modalContainer = document.querySelector("[data-modal-container]");
-const modalCloseBtn = document.querySelector("[data-modal-close-btn]");
+const modalCloseBtn = document.querySelector("[data-modal-close-btn]");// filepath: /d:/learning/my_portfolio/Varun_personal-portfolio_GH_VS/assets/js/script.js
+
+document.addEventListener('DOMContentLoaded', function () {
+  const filterButtons = document.querySelectorAll('[data-filter]');
+  const projectItems = document.querySelectorAll('.project-item');
+
+  filterButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const filter = button.getAttribute('data-filter');
+
+      // Remove active class from all buttons
+      filterButtons.forEach(btn => btn.classList.remove('active'));
+      // Add active class to the clicked button
+      button.classList.add('active');
+
+      // Filter project items
+      projectItems.forEach(item => {
+        if (filter === 'all' || item.getAttribute('data-category') === filter) {
+          item.style.display = 'block';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    });
+  });
+});
 const overlay = document.querySelector("[data-overlay]");
 
 // modal variable
